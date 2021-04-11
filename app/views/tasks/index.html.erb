@@ -1,8 +1,8 @@
-<h1>タスク一覧ページ</h1>
-<ul>
-    <% @tasks.each do |task| %>
-      <li><%= link_to task.id, task %> : <%= task.status %>&gt;<%= task.content %></li>
-    <% end %>
-</ul>
-
-<%= link_to '新規タスクの作成', new_task_path %>
+<% if logged_in? %>
+  <p><%= @user.name %>のタスク</p>
+  <div>
+    <%= render 'tasks', tasks: @tasks %>
+  </div>
+<% else %>
+    <h1>Welcome to the Tasklists</h1>
+<% end %>

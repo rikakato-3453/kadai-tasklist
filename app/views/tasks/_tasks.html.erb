@@ -1,0 +1,23 @@
+<div>
+  <% @tasks.each do |task| %>
+    <div align="center">
+      <table>
+        <tr>
+          <td><%= link_to task.user.name, user_path(task.user) %></td>
+          <td>post at: <%= task.created_at %></td>
+        </tr>
+        <tr>
+          <td>ステータス:<%= task.status %></td>
+        </tr>
+        <tr>
+          <td>タスク：<%= task.content %></td>
+        </tr>
+      </table>
+      <div>
+        <% if current_user == task.user %>
+          <%= link_to "Delete", task, method: :delete, data: { confirm: "You sure?" } %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
