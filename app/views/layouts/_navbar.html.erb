@@ -1,26 +1,27 @@
 <header>
   <% if logged_in? %>
-    <div align="center">
+    <div>
       <h1><%= link_to 'Tasklists', root_path %></h1>
     </div>
  
     <table>
       <tr>
-        <td><%= link_to 'users', users_path %></td>
-      </tr>
-      <tr>
         <td><%= current_user.name %></td>
       </tr>
       <tr>
-        <td><%= link_to 'My profile', user_path(current_user) %></td>
+        <td><p>My profile</p></td>
+      </tr>
+      <tr>
         <td><%= link_to 'Logout', logout_path, method: :delete %></td>
+      </tr>
+      <tr>
         <td><%= link_to '新規作成', new_task_path %></td>
       </tr>
     </table>
     
   <% else %>
-      <div align="right">
-        <table border="1">
+      <div>
+        <table>
           <tr>
             <td><%= link_to 'Signup', signup_path %></td>
             <td><%= link_to 'Login', login_path %></td>

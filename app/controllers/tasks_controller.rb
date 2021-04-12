@@ -24,12 +24,14 @@ before_action :correct_user, only: [:destroy]
       redirect_to root_path
     else
       @tasks = current_user.tasks.order(id: :desc)
+      @user = current_user
       flash.now[:danger] = 'Taskが追加されませんでした'
-      render template: 'tasks/index'
+      render :index
     end 
   end 
   
   def edit 
+    @task = Task.find(params[:id])
   end 
   
   def update

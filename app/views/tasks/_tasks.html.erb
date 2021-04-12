@@ -1,10 +1,12 @@
 <div>
   <% @tasks.each do |task| %>
-    <div align="center">
+    <div>
       <table>
         <tr>
-          <td><%= link_to task.user.name, user_path(task.user) %></td>
           <td>post at: <%= task.created_at %></td>
+        </tr>
+        <tr>
+          <td>id:<%= link_to task.id, task %></td>
         </tr>
         <tr>
           <td>ステータス:<%= task.status %></td>
