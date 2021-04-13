@@ -1,4 +1,4 @@
-<h1><%= @user.name %>のタスク</h1>
+<h1><%= current_user.name %>のタスク</h1>
 <div>
   <%= render 'tasks', tasks: @tasks %>
 </div>

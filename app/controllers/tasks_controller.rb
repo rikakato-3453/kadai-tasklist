@@ -1,15 +1,12 @@
 class TasksController < ApplicationController
 before_action :require_user_logged_in  
-before_action :set_task, only:[:show, :edit, :update, :destroy]
-before_action :correct_user, only: [:destroy]
+before_action :correct_user, only: [:destroy, :edit, :show, :update]
 
   def index
     @tasks = current_user.tasks.order(id: :desc)
-    @user = current_user
   end 
   
   def show
-    
   end 
   
   def new
@@ -26,12 +23,11 @@ before_action :correct_user, only: [:destroy]
       @tasks = current_user.tasks.order(id: :desc)
       @user = current_user
       flash.now[:danger] = 'Taskが追加されませんでした'
-      render :index
+      render :new
     end 
   end 
   
   def edit 
-    @task = Task.find(params[:id])
   end 
   
   def update
@@ -54,9 +50,7 @@ before_action :correct_user, only: [:destroy]
   
   private
   
-  def set_task
-    @task = Task.find(params[:id])
-  end 
+
   
   def task_params
     params.require(:task).permit(:content, :status)
